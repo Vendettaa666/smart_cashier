@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smartcashier/screens/auth/register_screen.dart'; // Import yang benar!
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -14,10 +13,11 @@ class LoginScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF018ABE),
-                Colors.white,
-              ],
+                      colors: [
+                  Color(0xFF018ABE), // Start color (top) - a shade of blue
+                  Color(0xFFFFFFFF), // End color (bottom) - white
+                ],
+              stops: [0.0, 0.6], // Adjust stops for color distribution
             ),
           ),
           child: Center(
@@ -117,16 +117,18 @@ class __FormContentState extends State<_FormContent> {
                 labelText: 'Email',
                 hintText: 'Enter your email',
                 prefixIcon: Icon(Icons.email_outlined),
+                fillColor: Colors.white,
+                filled: true,
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.white, width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.white, width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white),
+                  borderSide: BorderSide(color: Colors.white, width: 2.0),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
               ),
@@ -148,16 +150,18 @@ class __FormContentState extends State<_FormContent> {
                   labelText: 'Password',
                   hintText: 'Enter your password',
                   prefixIcon: const Icon(Icons.lock_outline_rounded),
+                  fillColor: Colors.white,
+                  filled: true,
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white),
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                   ),
                   suffixIcon: IconButton(
@@ -172,18 +176,25 @@ class __FormContentState extends State<_FormContent> {
                   )),
             ),
             _gap(),
-            CheckboxListTile(
-              value: _rememberMe,
-              onChanged: (value) {
-                if (value == null) return;
-                setState(() {
-                  _rememberMe = value;
-                });
-              },
-              title: const Text('Remember me'),
-              controlAffinity: ListTileControlAffinity.leading,
-              dense: true,
-              contentPadding: const EdgeInsets.all(0),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(25.0),
+                border: Border.all(color: Colors.white, width: 2.0),
+              ),
+              child: CheckboxListTile(
+                value: _rememberMe,
+                onChanged: (value) {
+                  if (value == null) return;
+                  setState(() {
+                    _rememberMe = value;
+                  });
+                },
+                title: const Text('Remember me'),
+                controlAffinity: ListTileControlAffinity.leading,
+                dense: true,
+                contentPadding: const EdgeInsets.all(0),
+              ),
             ),
             _gap(),
             SizedBox(
@@ -208,24 +219,32 @@ class __FormContentState extends State<_FormContent> {
               ),
             ),
             _gap(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Belum punya akun? "),
-                TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, '/register_screen');
-                },
-                child: const Text(
-                  "Register disini",
-                  style: TextStyle(
-                    color: Colors.blue,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+            Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(0, 255, 255, 255),
+                
               ),
-              ],
-            ),          ],
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Belum punya akun? "),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/register_screen');
+                    },
+                    child: const Text(
+                      "Register disini",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

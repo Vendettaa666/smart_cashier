@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smartcashier/screens/auth/login_screen.dart';
-import 'package:smartcashier/screens/auth/register_screen.dart'; // Import yang benar!
+import 'package:smartcashier/screens/auth/register_screen.dart';
+import 'package:smartcashier/screens/user/homepage.dart'; // Import yang benar!
 
 void main() {
   runApp(const SmartCashier());
@@ -22,6 +23,7 @@ class SmartCashier extends StatelessWidget {
       routes: {
         '/': (context) => const LoginScreen(), // LoginScreen di sini
         '/register_screen': (context) => RegisterScreen(), // RegisterScreen di sini
+        '/homeuser' : (context) => HomeUser(), // HomeUser di sini
       },
     );
   }

@@ -238,10 +238,36 @@ class __FormContentState extends State<_FormContent> {
                   ),
                 ),
                 onPressed: () {
+                   Navigator.pushNamed(context, '/homeuser');
                   if (_formKey.currentState?.validate() ?? false) {
                     // TODO: Handle sign-up logic here (e.g., API call)
                   }
                 },
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(0, 255, 255, 255),
+                
+              ),
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Sudah punya akun? "),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/');
+                    },
+                    child: const Text(
+                      "Login disini",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
