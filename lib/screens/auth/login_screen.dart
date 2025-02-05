@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smartcashier/screens/auth/register_screen.dart'; // Import yang benar!
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -45,7 +46,7 @@ class LoginScreen extends StatelessWidget {
 }
 
 class _Logo extends StatelessWidget {
-  const _Logo({super.key});
+  const _Logo();
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +75,7 @@ class _Logo extends StatelessWidget {
 }
 
 class _FormContent extends StatefulWidget {
-  const _FormContent({super.key});
+  const _FormContent();
 
   @override
   State<_FormContent> createState() => __FormContentState();
@@ -117,15 +118,15 @@ class __FormContentState extends State<_FormContent> {
                 hintText: 'Enter your email',
                 prefixIcon: Icon(Icons.email_outlined),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white), // Set border color to white
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)), // Set border radius to 25
-                ),
-                focusedBorder: OutlineInputBorder( // Style for when the input is focused
-                  borderSide: BorderSide(color: Colors.white), // Also white when focused
+                  borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
-                enabledBorder: OutlineInputBorder( // Style for when the input is enabled but not focused
-                  borderSide: BorderSide(color: Colors.white), // Also white when enabled
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
               ),
@@ -147,7 +148,18 @@ class __FormContentState extends State<_FormContent> {
                   labelText: 'Password',
                   hintText: 'Enter your password',
                   prefixIcon: const Icon(Icons.lock_outline_rounded),
-                  border: const OutlineInputBorder(),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white),
+                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  ),
                   suffixIcon: IconButton(
                     icon: Icon(_isPasswordVisible
                         ? Icons.visibility_off
@@ -195,7 +207,25 @@ class __FormContentState extends State<_FormContent> {
                 },
               ),
             ),
-          ],
+            _gap(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Belum punya akun? "),
+                TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register_screen');
+                },
+                child: const Text(
+                  "Register disini",
+                  style: TextStyle(
+                    color: Colors.blue,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              ],
+            ),          ],
         ),
       ),
     );
