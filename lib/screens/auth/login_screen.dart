@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
                   Color(0xFF018ABE), // Start color (top) - a shade of blue
                   Color(0xFFFFFFFF), // End color (bottom) - white
                 ],
-              stops: [0.0, 0.6], // Adjust stops for color distribution
+              stops: [0.85, 1.0], // Adjusted stops for 85% blue, 15% white
             ),
           ),
           child: Center(
@@ -178,9 +178,6 @@ class __FormContentState extends State<_FormContent> {
             _gap(),
             Container(
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25.0),
-                border: Border.all(color: Colors.white, width: 2.0),
               ),
               child: CheckboxListTile(
                 value: _rememberMe,
@@ -212,6 +209,7 @@ class __FormContentState extends State<_FormContent> {
                   ),
                 ),
                 onPressed: () {
+                  Navigator.pushNamed(context, '/homeuser');
                   if (_formKey.currentState?.validate() ?? false) {
                     /// do something
                   }
@@ -236,7 +234,7 @@ class __FormContentState extends State<_FormContent> {
                     child: const Text(
                       "Register disini",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.bold,
                       ),
                     ),

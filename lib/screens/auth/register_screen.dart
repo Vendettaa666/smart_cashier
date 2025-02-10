@@ -11,13 +11,14 @@ class RegisterScreen extends StatelessWidget {
       body: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              Color(0xFF018ABE),
-              Colors.white,
-            ],
-          ),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+                      colors: [
+                  Color(0xFF018ABE), // Start color (top) - a shade of blue
+                  Color(0xFFFFFFFF), // End color (bottom) - white
+                ],
+              stops: [0.85, 1.0], // Adjusted stops for 85% blue, 15% white
+            ),
         ),
         child: Center(
           child: isSmallScreen
@@ -201,19 +202,22 @@ class __FormContentState extends State<_FormContent> {
               ),
             ),
             _gap(),
-             TextFormField(
+
+            TextFormField(
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please confirm your password';
                 }
-                // You should also compare with the password field here.
+                if (value.length < 6) {
+                  return 'Password must be at least 6 characters';
+                }
                 return null;
               },
-              obscureText: true,
-              decoration: const InputDecoration(
+              obscureText: !_isPasswordVisible,
+              decoration: InputDecoration(
                 labelText: 'Confirm Password',
                 hintText: 'Confirm your password',
-                prefixIcon: Icon(Icons.lock_outline_rounded),
+                prefixIcon: const Icon(Icons.lock_outline_rounded),
                 filled: true,
                 fillColor: Colors.white,
                 border: OutlineInputBorder(
@@ -228,9 +232,19 @@ class __FormContentState extends State<_FormContent> {
                   borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                 ),
+                suffixIcon: IconButton(
+                  icon:
+                      Icon(_isPasswordVisible ? Icons.visibility_off : Icons.visibility),
+                  onPressed: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
+                ),
               ),
             ),
             _gap(),
+            
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -246,7 +260,7 @@ class __FormContentState extends State<_FormContent> {
                   ),
                 ),
                 onPressed: () {
-                   Navigator.pushNamed(context, '/homeuser');
+                   
                   if (_formKey.currentState?.validate() ?? false) {
                     // TODO: Handle sign-up logic here (e.g., API call)
                   }
@@ -270,7 +284,7 @@ class __FormContentState extends State<_FormContent> {
                     child: const Text(
                       "Login disini",
                       style: TextStyle(
-                        color: Colors.blue,
+                        color: Color.fromARGB(255, 255, 255, 255),
                         fontWeight: FontWeight.bold,
                       ),
                     ),
