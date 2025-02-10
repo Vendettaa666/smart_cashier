@@ -109,6 +109,8 @@ class __FormContentState extends State<_FormContent> {
                 labelText: 'Name',
                 hintText: 'Enter your name',
                 prefixIcon: Icon(Icons.person_outline),
+                filled: true,
+                fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -141,6 +143,8 @@ class __FormContentState extends State<_FormContent> {
                 labelText: 'Email',
                 hintText: 'Enter your email',
                 prefixIcon: Icon(Icons.email_outlined),
+                filled: true,
+                fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -171,6 +175,8 @@ class __FormContentState extends State<_FormContent> {
                 labelText: 'Password',
                 hintText: 'Enter your password',
                 prefixIcon: const Icon(Icons.lock_outline_rounded),
+                filled: true,
+                fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -208,6 +214,8 @@ class __FormContentState extends State<_FormContent> {
                 labelText: 'Confirm Password',
                 hintText: 'Confirm your password',
                 prefixIcon: Icon(Icons.lock_outline_rounded),
+                filled: true,
+                fillColor: Colors.white,
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.white),
                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
