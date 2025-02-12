@@ -23,7 +23,7 @@ class SmartCashier extends StatelessWidget {
       routes: {
         '/': (context) => const LoginScreen(), // LoginScreen di sini
         '/register_screen': (context) => RegisterScreen(), // RegisterScreen di sini
-        '/homeuser' : (context) => HomeUser(), // HomeUser di sini
+        '/homeuser' : (context) => HomePage(), // HomeUser di sini
       },
     );
   }

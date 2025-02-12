@@ -260,7 +260,7 @@ class __FormContentState extends State<_FormContent> {
                   ),
                 ),
                 onPressed: () {
-                   
+                  Navigator.pushNamed(context, '/homeuser');
                   if (_formKey.currentState?.validate() ?? false) {
                     // TODO: Handle sign-up logic here (e.g., API call)
                   }
