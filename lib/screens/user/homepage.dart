@@ -8,6 +8,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFF018ABE),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: Text("HOME",
