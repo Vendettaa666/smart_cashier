@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -84,11 +84,11 @@ class HomePage extends StatelessWidget {
     final String price;
 
     const FoodCard({
-      Key? key,
+      super.key,
       required this.imagePath,
       required this.title,
       required this.price,
-    }) : super(key: key);
+    });
 
     @override
     Widget build(BuildContext context) {

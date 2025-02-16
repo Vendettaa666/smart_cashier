@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smartcashier/screens/admin/home_admin.dart';
 import 'package:smartcashier/screens/auth/login_screen.dart';
 import 'package:smartcashier/screens/auth/register_screen.dart';
-import 'package:smartcashier/screens/user/homepage.dart'; // Import yang benar!
+// Import yang benar!
 
 void main() {
   runApp(const SmartCashier());
