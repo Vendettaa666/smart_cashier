@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:smartcashier/screens/admin/widgets/popupmenu.dart';
+import 'package:smartcashier/screens/admin/kelola_product.dart';
+import 'package:smartcashier/screens/admin/kelola_user.dart';
+import 'package:smartcashier/screens/admin/kelola_meja.dart';
+import 'package:smartcashier/screens/admin/riwayat_transaksi.dart';
+
+
+// Import halaman tujuan
 
 class AdminPage extends StatelessWidget {
   const AdminPage({super.key});
@@ -21,10 +28,10 @@ class ManagementScreen extends StatelessWidget {
   ManagementScreen({super.key});
 
   final List<Map<String, dynamic>> menuItems = [
-    {'icon': Icons.store, 'title': 'Kelola Produk'},
-    {'icon': Icons.person, 'title': 'Kelola User'},
-    {'icon': Icons.table_bar, 'title': 'Kelola Meja'},
-    {'icon': Icons.history, 'title': 'Riwayat Transaksi'},
+    {'icon': Icons.store, 'title': 'Kelola Produk', 'page': KelolaProductScreen()},
+    {'icon': Icons.person, 'title': 'Kelola User', 'page': KelolaUserScreen()},
+    {'icon': Icons.table_bar, 'title': 'Kelola Meja', 'page': KelolaMejaScreen()},
+    {'icon': Icons.history, 'title': 'Riwayat Transaksi', 'page': RiwayatTransaksiScreen()},
   ];
 
   @override
@@ -99,7 +106,12 @@ class ManagementScreen extends StatelessWidget {
                         shadowColor: Colors.black26,
                         child: InkWell(
                           borderRadius: BorderRadius.circular(15),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => item['page']),
+                            );
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Row(
