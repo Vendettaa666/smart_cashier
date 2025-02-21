@@ -37,24 +37,23 @@ class KelolaProductScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            
-Padding(
-  padding: const EdgeInsets.all(16.0),
-  child: TextField(
-    decoration: InputDecoration(
-      hintText: 'Search...',
-      prefixIcon: const Icon(Icons.search, color: Colors.white),
-      filled: true,
-      fillColor: Colors.white.withOpacity(0.5),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide.none,
-      ),
-      hintStyle: const TextStyle(color: Colors.white70),
-    ),
-    style: const TextStyle(color: Colors.white),
-  ),
-),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    prefixIcon: const Icon(Icons.search, color: Colors.white),
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.5),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintStyle: const TextStyle(color: Colors.white70),
+                  ),
+                  style: const TextStyle(color: Colors.white),
+                ),
+              ),
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
