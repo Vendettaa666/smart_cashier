@@ -13,11 +13,11 @@ class LoginScreen extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-                      colors: [
-                  Color(0xFF018ABE), // Start color (top) - a shade of blue
-                  Color(0xFFFFFFFF), // End color (bottom) - white
-                ],
-              stops: [0.85, 1.0], // Adjusted stops for 85% blue, 15% white
+              colors: [
+                Color(0xFF018ABE),
+                Color(0xFF015C92),
+              ],
+              stops: [0.5, 1.0],
             ),
           ),
           child: Center(
@@ -62,11 +62,14 @@ class _Logo extends StatelessWidget {
             "Welcome to Flutter!",
             textAlign: TextAlign.center,
             style: isSmallScreen
-                ? Theme.of(context).textTheme.headlineSmall
-                : Theme.of(context)
-                    .textTheme
-                    .headlineMedium
-                    ?.copyWith(color: Colors.black),
+                ? Theme.of(context).textTheme.headlineSmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  )
+                : Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
           ),
         )
       ],
@@ -97,145 +100,147 @@ class __FormContentState extends State<_FormContent> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              validator: (value) {
-                // add email validation
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-
-                bool emailValid = RegExp(
-                        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                    .hasMatch(value);
-                if (!emailValid) {
-                  return 'Please enter a valid email';
-                }
-
-                return null;
-              },
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                hintText: 'Enter your email',
-                prefixIcon: Icon(Icons.email_outlined),
-                fillColor: Colors.white,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.white, width: 2.0),
-                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+            Card(
+              elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  bool emailValid = RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                      .hasMatch(value);
+                  if (!emailValid) {
+                    return 'Please enter a valid email';
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  
+                  hintText: 'Enter your email',
+                  prefixIcon: Icon(Icons.email_outlined, color: Color(0xFF018ABE)),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide.none,
+                  ),
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
               ),
             ),
             _gap(),
-            TextFormField(
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter some text';
-                }
-
-                if (value.length < 6) {
-                  return 'Password must be at least 6 characters';
-                }
-                return null;
-              },
-              obscureText: !_isPasswordVisible,
-              decoration: InputDecoration(
-                  labelText: 'Password',
+            Card(
+              elevation: 8,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25),
+              ),
+              child: TextFormField(
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  if (value.length < 6) {
+                    return 'Password must be at least 6 characters';
+                  }
+                  return null;
+                },
+                obscureText: !_isPasswordVisible,
+                decoration: InputDecoration(
+                  
                   hintText: 'Enter your password',
-                  prefixIcon: const Icon(Icons.lock_outline_rounded),
-                  fillColor: Colors.white,
-                  filled: true,
+                  prefixIcon: Icon(Icons.lock_outline_rounded, color: Color(0xFF018ABE)),
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide.none,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.white, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                  ),
+                  filled: true,
+                  fillColor: Colors.white,
                   suffixIcon: IconButton(
-                    icon: Icon(_isPasswordVisible
-                        ? Icons.visibility_off
-                        : Icons.visibility),
+                    icon: Icon(
+                      _isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+                      color: Color(0xFF018ABE),
+                    ),
                     onPressed: () {
                       setState(() {
                         _isPasswordVisible = !_isPasswordVisible;
                       });
                     },
-                  )),
+                  ),
+                ),
+              ),
             ),
             _gap(),
-            Container(
-              decoration: BoxDecoration(
-              ),
-              child: CheckboxListTile(
-                value: _rememberMe,
-                onChanged: (value) {
-                  if (value == null) return;
-                  setState(() {
-                    _rememberMe = value;
-                  });
-                },
-                title: const Text('Remember me'),
-                controlAffinity: ListTileControlAffinity.leading,
-                dense: true,
-                contentPadding: const EdgeInsets.all(0),
-              ),
+            CheckboxListTile(
+              value: _rememberMe,
+              onChanged: (value) {
+                if (value == null) return;
+                setState(() {
+                  _rememberMe = value;
+                });
+              },
+              title: const Text('Remember me', style: TextStyle(color: Colors.white)),
+              controlAffinity: ListTileControlAffinity.leading,
+              dense: true,
+              contentPadding: const EdgeInsets.symmetric(horizontal: 8),
             ),
             _gap(),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF015C92),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(4)),
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  padding: EdgeInsets.symmetric(vertical: 15),
+                  elevation: 8,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Text(
-                    'Sign in',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                child: const Text(
+                  'Sign in',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/homeadmin');
-                  if (_formKey.currentState?.validate() ?? false) {
-                    /// do something
-                  }
+                  Navigator.pushReplacementNamed(context, '/homeadmin');
+                  // if (_formKey.currentState?.validate() ?? false) {
+                  //   Navigator.pushReplacementNamed(context, '/homeadmin');
+                  // }
                 },
               ),
             ),
             _gap(),
             Container(
               decoration: BoxDecoration(
-                color: const Color.fromARGB(0, 255, 255, 255),
-                
+                color: Colors.white.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(15),
               ),
-              padding: EdgeInsets.all(8.0),
+              padding: EdgeInsets.all(12.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Belum punya akun? "),
+                  const Text(
+                    "Belum punya akun? ",
+                    style: TextStyle(color: Colors.white),
+                  ),
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, '/register_screen');
                     },
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                    ),
                     child: const Text(
                       "Register disini",
                       style: TextStyle(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.normal,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Colors.white,
                       ),
                     ),
                   ),
@@ -245,8 +250,7 @@ class __FormContentState extends State<_FormContent> {
           ],
         ),
       ),
-    );
-  }
+    );  }
 
   Widget _gap() => const SizedBox(height: 16);
 }
