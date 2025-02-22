@@ -68,9 +68,39 @@ class KelolaUserScreen extends StatelessWidget {
                     'email': 'karyawan1@gmail.com',
                     'password': 'password123',
                   },
-                  
+                  '1': {
+                    'path': '../assets/user.png',
+                    'username': 'User 2',
+                    'nama_lengkap': 'karyawan 2',
+                    'no_telpon': '+628234567890',
+                    'email': 'karyawan2@gmail.com',
+                    'password': 'password456',
+                  },
+                  '2': {
+                    'path': '../assets/user.png',
+                    'username': 'User 3',
+                    'nama_lengkap': 'karyawan 3',
+                    'no_telpon': '+628345678901',
+                    'email': 'karyawan3@gmail.com',
+                    'password': 'password789',
+                  },
+                  '3': {
+                    'path': '../assets/user.png',
+                    'username': 'User 4',
+                    'nama_lengkap': 'karyawan 4',
+                    'no_telpon': '+628456789012',
+                    'email': 'karyawan4@gmail.com',
+                    'password': 'password012',
+                  },
+                  '4': {
+                    'path': '../assets/user.png',
+                    'username': 'User 5',
+                    'nama_lengkap': 'karyawan 5',
+                    'no_telpon': '+628567890123',
+                    'email': 'karyawan5@gmail.com',
+                    'password': 'password345',
+                  },
                 };
-
                 final userData = userDetails['$index']; // Ambil data makanan berdasarkan index
 
                 if (userData != null) { // Pastikan data ditemukan sebelum ditampilkan

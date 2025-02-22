@@ -37,7 +37,7 @@
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
                   imagePath,
@@ -70,11 +70,13 @@
                     ],
                   ),
                 ),
-                IconButton(
-                  onPressed: () {
-                    // Tambahkan logika untuk menghapus item
-                  },
-                  icon: const Icon(Icons.delete),
+                Center(
+                  child: IconButton(
+                    onPressed: () {
+                      // Tambahkan logika untuk menghapus item
+                    },
+                    icon: const Icon(Icons.delete),
+                  ),
                 ),
               ],
             ),
