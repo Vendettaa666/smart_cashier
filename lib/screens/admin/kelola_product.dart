@@ -6,6 +6,65 @@ import 'package:smartcashier/screens/admin/widgets/foodcard.dart';
 class KelolaProductScreen extends StatelessWidget {
   const KelolaProductScreen({super.key});
 
+  void _showAddProductForm(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Tambah Produk'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'Nama Produk',
+                    hintText: 'Masukkan nama produk',
+                  ),
+                ),
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'Harga',
+                    hintText: 'Masukkan harga (contoh: Rp 10.000)',
+                  ),
+                ),
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: 'Deskripsi',
+                    hintText: 'Masukkan deskripsi produk',
+                  ),
+                  maxLines: 3,
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    // TODO: Implementasi upload gambar
+                  },
+                  child: const Text('Upload Gambar'),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: const Text('Batal'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // TODO: Implementasi simpan produk
+                Navigator.of(context).pop();
+              },
+              child: const Text('Simpan'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +92,11 @@ class KelolaProductScreen extends StatelessWidget {
         ],
         backgroundColor: const Color(0xFF018ABE),
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showAddProductForm(context),
+        backgroundColor: Colors.white,
+        child: const Icon(Icons.add, color: Color(0xFF018ABE)),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -98,9 +162,9 @@ class KelolaProductScreen extends StatelessWidget {
                   },
                 };
 
-                final foodData = foodItems['$index']; // Ambil data makanan berdasarkan index
+                final foodData = foodItems['$index'];
 
-                if (foodData != null) { // Pastikan data ditemukan sebelum ditampilkan
+                if (foodData != null) {
                   return FoodCard(
                     imagePath: foodData['path']!,
                     title: foodData['title']!,
@@ -108,7 +172,7 @@ class KelolaProductScreen extends StatelessWidget {
                     description: foodData['description']!,
                   );
                 } else {
-                  return Container(); // Return empty container jika data tidak ditemukan
+                  return Container();
                 }
               },
             ),

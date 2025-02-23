@@ -20,9 +20,9 @@ class SmartCashier extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/', // Rute awal aplikasi
+      initialRoute: '/login_screen', // Rute awal aplikasi
       routes: {
-        '/': (context) => const LoginScreen(), // LoginScreen di sini
+        '/login_screen': (context) => const LoginScreen(), // LoginScreen di sini
         '/register_screen': (context) => RegisterScreen(), // RegisterScreen di sini
         '/homeadmin' : (context) => AdminPage(), // HomeUser di sini
       },

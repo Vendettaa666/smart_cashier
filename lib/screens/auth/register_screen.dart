@@ -330,7 +330,7 @@ class __FormContentState extends State<_FormContent> {
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, '/login');
+                    Navigator.pushNamed(context, '/login_screen');
                   },
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.white,
